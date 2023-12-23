@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import CoinCard from './CoinCard';
 
 function Coins() {
   const [coins, setCoins] = useState([]);
@@ -12,15 +13,9 @@ function Coins() {
   }, []);
 
   return (
-    <div>
+    <div className="flex flex-wrap justify-around">
       {coins.map((coin, index) => (
-        <div key={index}>
-          <h2>{coin.title}</h2>
-          <img src={coin.image} alt="Coin" style={{ width: '200px', height: '200px' }} />          <p>{coin.prizeWithoutShipping}</p>
-          <p>{coin.prizeWithShipping}</p>
-          <p>{coin.shortDescription}</p>
-          <p>{coin.quantityInStock}</p>
-        </div>
+        <CoinCard key={index} coin={coin} />
       ))}
     </div>
   )

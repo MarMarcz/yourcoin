@@ -1,6 +1,8 @@
+import "../styles/globals.css";
+
 function Navbar() {
     return (
-      <nav style={{ display: 'flex', justifyContent: 'left', padding: '1em', backgroundColor: '#f8f8f8' }}>
+      <nav className="navbar">
         <h1>YourCoin</h1>
       </nav>
     )

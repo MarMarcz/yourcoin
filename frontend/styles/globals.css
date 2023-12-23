@@ -25,3 +25,10 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.navbar {
+  display: flex;
+  justify-content: left;
+  padding: 1em;
+  background-color: #f8f8f8;
+}
