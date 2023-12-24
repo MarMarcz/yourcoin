@@ -1,5 +1,5 @@
-import Navbar from '../components/Navbar'
-import Coins from '../components/Coins'
+import Navbar from '../app/components/Navbar'
+import Coins from '../app/components/Coins'
 
 export default function Home() {
   return (
