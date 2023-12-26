@@ -1,6 +1,8 @@
 // CoinCard.js
 import React from 'react';
 import { useState } from 'react';
+import Link from 'next/link';
+
 
 interface Coin {
   image: string;
@@ -29,7 +31,9 @@ function CoinCard({ coin }: { coin: Coin }) {
         <p>Quantity: {coin.quantityInStock}</p>
         {isHovered && (
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 space-x-2 flex">
-          <button className="rounded bg-gray-800 text-white p-2">See details</button>
+            <Link href={`coins/${coin.title}`} className="rounded bg-gray-800 text-white p-2">
+              See details
+            </Link>
           <button className="rounded bg-gray-800 text-white p-2">Add to cart</button>
         </div>
         )}
