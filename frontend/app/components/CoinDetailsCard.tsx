@@ -1,6 +1,9 @@
 // CoinDetailsCard.tsx
 import React from 'react';
 import StarRatings from 'react-star-ratings';
+import AddReview from './AddReview';
+import { useMemo } from 'react'; 
+
 
 interface Review {
     user: string;
@@ -9,6 +12,7 @@ interface Review {
 }
 
 interface Coin {
+  _id: string;
   image: string;
   title: string;
   prizeWithoutShipping: number;
@@ -19,9 +23,28 @@ interface Coin {
   reviews: Review[];
 }
 
+
 function CoinDetailsCard({ coin }: { coin: Coin }) {
   const averageRating = 
     coin.reviews.reduce((prev, curr) => prev + curr.rating, 0) / coin.reviews.length;
+
+    const renderedReviews = useMemo(() => coin.reviews.map((review, index) => (
+      <div key={index}>
+        <p>{review.user}: {review.text}
+          <StarRatings
+            rating={review.rating}
+            starRatedColor="gold"
+            numberOfStars={5}
+            name='rating'
+            starDimension="20px"
+            starSpacing="2px"
+            starHoverColor="gold"
+            starEmptyColor="gray"
+          />
+        </p>
+      </div>
+    )), [coin.reviews]);
+
 
   return (
     <div className="flex flex-col max-w-2xl rounded overflow-hidden shadow-lg m-2 relative">
@@ -35,10 +58,7 @@ function CoinDetailsCard({ coin }: { coin: Coin }) {
           <p>MORE: {coin.extendedDescription}</p>
           <p>Quantity: {coin.quantityInStock}</p>
           <p>Shipping available: inpost, courier</p>
-          <div className="absolute bottom-0 right-0 transform -translate-x-1/2 -translate-y-1/2 space-x-2 flex">
-            <button className="rounded bg-gray-800 text-white p-2">Add to cart</button>
-          </div>
-
+         
           <p>Average Rating: 
           <StarRatings
             rating={averageRating}
@@ -51,28 +71,21 @@ function CoinDetailsCard({ coin }: { coin: Coin }) {
             starEmptyColor="gray"
           />
           </p>
+
+          <div className="space-x-2 flex">
+            <button className="rounded bg-gray-800 text-white p-2">Add to cart</button>
+          </div>
+
         </div>
       </div>
 
       <div className="px-6 py-4">
       <p>Opinions:</p> 
-        {coin.reviews.map((review, index) => (
-          <div key={index}>
-            <p>{review.user}: {review.text}
-              <StarRatings
-                rating={review.rating}
-                starRatedColor="gold"
-                numberOfStars={5}
-                name='rating'
-                starDimension="20px"
-                starSpacing="2px"
-                starHoverColor="gold"
-                starEmptyColor="gray"
-              />
-            </p>
-          </div>
-        ))}
+        {renderedReviews}
       </div>
+
+      <AddReview coinId={coin._id} />
+
     </div>
   );
 }
