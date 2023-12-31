@@ -11,6 +11,7 @@ interface Coin {
   prizeWithShipping: number;
   shortDescription: string;
   quantityInStock: number;
+  averageRating: number;
 }
 
 
