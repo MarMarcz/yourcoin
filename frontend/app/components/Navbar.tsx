@@ -1,9 +1,14 @@
 import "../../styles/globals.css";
+import "../../styles/Navbar.css";
+import Link from 'next/link';
+
 
 function Navbar() {
     return (
       <nav className="navbar">
-        <h1>YourCoin</h1>
+        <Link href="/">
+          <h1>YourCoin</h1>
+        </Link>
       </nav>
     )
   }
