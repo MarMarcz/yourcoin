@@ -1,5 +1,5 @@
 import Navbar from '../../app/components/Navbar'
-import Coin from '../../app/components/Coin'
+import Coin from '../../app/components/coins/Coin'
 
 export default function CoinDetails() {
   return (

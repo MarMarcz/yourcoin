@@ -3,6 +3,14 @@
 import { useEffect, useState } from 'react';
 import CoinCard from './CoinCard';
 
+export interface Coin {
+  _id: string;
+  title: string;
+  prizeWithoutShipping: number;
+  prizeWithShipping: number;
+  quantityInStock: number;
+}
+
 function Coins() {
   const [coins, setCoins] = useState([]);
   const [displayedCoins, setDisplayedCoins] = useState([]);
@@ -67,6 +75,7 @@ function Coins() {
       setError('Please enter a valid number');
     }
   };
+
 
   return (
     <div>

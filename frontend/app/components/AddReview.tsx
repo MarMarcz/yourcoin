@@ -35,7 +35,7 @@ function AddReview({ coinId }: AddReviewProps) {
           validationSchema={validationSchema}
           onSubmit={async (values) => {
             try {
-              const response = await api.post('/addReview', { ...values, coinId });
+              const response = await api.post('/api/addReview', { ...values, coinId });
               console.log(response.data);
               window.location.reload();
             } catch (error) {

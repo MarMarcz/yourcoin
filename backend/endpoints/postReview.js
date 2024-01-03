@@ -4,7 +4,7 @@ const Coin = require('../models/CoinSchema');
 
 const router = express.Router();
 
-router.post('/addReview', async (req, res) => {
+router.post('/api/addReview', async (req, res) => {
   const { user, text, rating, coinId } = req.body;
 
   try {

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useRouter } from 'next/router';
+import Navbar from './Navbar';
 
 const Login = () => {
     const router = useRouter();
@@ -22,7 +23,7 @@ const Login = () => {
     const login = async (username: string, password: string) => {
         return username === nothere.username && password === nothere.password;
     };
-    
+
     const handleSubmit = async (values: Values) => {
         const isValid = await login(values.username, values.password);
         if (isValid) {
@@ -34,22 +35,25 @@ const Login = () => {
     }
 
     return (
-        <Formik
-            initialValues={initialValues}
-            onSubmit={handleSubmit}
-        >
-        <Form>
-            <label>Login:</label>
-            <Field name="username" type="text" />
-            <ErrorMessage name="username" component="div" />
+        <>
+            <Navbar />
+            <Formik
+                initialValues={initialValues}
+                onSubmit={handleSubmit}
+            >
+                <Form>
+                    <label>Login:</label>
+                    <Field name="username" type="text" />
+                    <ErrorMessage name="username" component="div" />
 
-            <label>Password:</label>
-            <Field name="password" type="password" />
-            <ErrorMessage name="password" component="div" />
+                    <label>Password:</label>
+                    <Field name="password" type="password" />
+                    <ErrorMessage name="password" component="div" />
 
-            <button type="submit">Submit</button>
-        </Form>
-        </Formik>
+                    <button type="submit">Submit</button>
+                </Form>
+            </Formik>
+        </>
     );
 }
 
