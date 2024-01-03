@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-
+import AddCoinForm from "../app/components/AddCoinForm";
+import Navbar from "../app/components/Navbar";
+import EditReviewForm from "@/app/components/EditReviewForm";
 
 export default function Admin() {
     const router = useRouter();
@@ -13,6 +15,10 @@ export default function Admin() {
     }, []);
 
     return (
-        <h1>Works</h1>
+        <>
+        <Navbar />
+        <AddCoinForm />
+        <EditReviewForm />
+        </>
     );
 }

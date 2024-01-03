@@ -16,8 +16,8 @@ const coinSchema = new mongoose.Schema({
     quantityInStock: Number,
     material: String,
     extendedDescription: String,
-    averageRating: Number,
-    reviews: [reviewSchema],
+    averageRating: { type: Number, default: 5 },
+    reviews: { type: [reviewSchema], default: [] },
 });
 
 const Coin = mongoose.model('Coin', coinSchema);
