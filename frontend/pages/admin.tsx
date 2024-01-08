@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import AddCoinForm from "../app/components/AddCoinForm";
+import AddCoinForm from "../app/components/admin/AddCoinForm";
 import Navbar from "../app/components/Navbar";
-import EditReviewForm from "@/app/components/EditReviewForm";
+import EditReviewForm from "../app/components/admin/EditReviewForm";
 
 export default function Admin() {
     const router = useRouter();

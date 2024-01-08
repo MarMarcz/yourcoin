@@ -1,5 +1,6 @@
 import React, { useReducer, useState, useEffect } from 'react';
 import Link from 'next/link';
+import "../../../styles/price.css"
 
 interface Coin {
   image: string;
@@ -34,21 +35,7 @@ const initialState: CartItem[] = [];
 function cartReducer(state: CartItem[], action: CartAction) {
   switch (action.type) {
     case 'ADD_TO_CART':
-      const existingCartItemIndex = state.findIndex(item => {
-        console.log('item.coin.title:', item.coin.title); // Debug log
-        console.log('action.payload.coin.title:', action.payload.coin.title); // Debug log
-        return item.coin.title === action.payload.coin.title;
-      });
-      
-      console.log('existingCartItemIndex:', existingCartItemIndex); // Debug log
-      if (existingCartItemIndex !== -1) {
-        const newState = [...state];
-        newState[existingCartItemIndex].quantity += 1;
-        console.log('newState after quantity update:', newState); // Debug log
-        return newState;
-      } else {
-        return [...state, action.payload];
-      }
+      return [...state, action.payload];
     case 'LOAD_CART':
       return action.payload;
     default:
@@ -58,31 +45,29 @@ function cartReducer(state: CartItem[], action: CartAction) {
 
 function CoinCard({ coin }: { coin: Coin }) {
   const [isHovered, setIsHovered] = useState(false);
-  const [cart, dispatchCart] = useReducer(cartReducer, initialState);
   const storedCart = localStorage.getItem('cart');
+  const initialState: CartItem[] = storedCart ? JSON.parse(storedCart) : [];
+  const [cart, dispatchCart] = useReducer(cartReducer, initialState);
 
   useEffect(() => {
-    if (storedCart) {
-      dispatchCart({ type: 'LOAD_CART', payload: JSON.parse(storedCart) });
-    }
-  }, []);
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
+  // const [cart, dispatchCart] = useReducer(cartReducer, initialState);
+  // const storedCart = localStorage.getItem('cart');
+  // console.log(storedCart);
+
+  // useEffect(() => {
+  //   if (storedCart) {
+  //     dispatchCart({ type: 'LOAD_CART', payload: JSON.parse(storedCart) });
+  //   }
+  // }, []);
 
 
-  const addToCart = () => {
-    const existingCartItem = cart.find(item => item.coin.title === coin.title);
-    console.log(existingCartItem);
-  
-    if (existingCartItem) {
-      const updatedCartItem = { ...existingCartItem, quantity: existingCartItem.quantity + 1 };
-      dispatchCart({ type: 'ADD_TO_CART', payload: updatedCartItem });
-    } else {
-      const newCartItem: CartItem = { coin, quantity: 1, prizeWithShipping: coin.prizeWithShipping };
-      console.log(newCartItem);
-      dispatchCart({ type: 'ADD_TO_CART', payload: newCartItem });
-    }
-  
-    window.alert("Pomyślnie dodano przedmiot do koszyka!");
-  };
+const addToCart = () => {
+  const newCartItem: CartItem = { coin, quantity: 1, prizeWithShipping: coin.prizeWithShipping };
+  dispatchCart({ type: 'ADD_TO_CART', payload: newCartItem });
+  window.alert("Successfully added item to the cart!");
+};
 
   return (
     <div
@@ -107,8 +92,8 @@ function CoinCard({ coin }: { coin: Coin }) {
       </div>
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2">{coin.title}</div>
-        <p>Price without shipping: {coin.prizeWithoutShipping}</p>
-        <p>Price with shipping: {coin.prizeWithShipping}</p>
+        <p className="price">Price without shipping: {coin.prizeWithoutShipping}</p>
+        <p className="price">Price with shipping: {coin.prizeWithShipping}</p>
         <p>{coin.shortDescription}</p>
         <p>Quantity: {coin.quantityInStock}</p>
       </div>
