@@ -4,6 +4,7 @@ import StarRatings from 'react-star-ratings';
 import AddReview from '../AddReview';
 import { useMemo, useState } from 'react';
 import { useReducer, useEffect } from 'react';
+import "../../../styles/price.css"
 
 interface Review {
   user: string;
@@ -60,6 +61,7 @@ function CoinDetailsCard({ coin }: { coin: Coin }) {
       dispatchCart({ type: 'LOAD_CART', payload: JSON.parse(storedCart) });
     }
   }, []);
+
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
@@ -75,7 +77,7 @@ function CoinDetailsCard({ coin }: { coin: Coin }) {
         prizeWithShipping: coin.prizeWithShipping 
       } 
     });
-    window.alert("Pomyślnie dodano przedmiot do koszyka!");
+    window.alert("Successfully added item to the cart!");
   };
 
 
@@ -108,8 +110,8 @@ function CoinDetailsCard({ coin }: { coin: Coin }) {
         <img className="w-1/2 bg-white" src={coin.image} alt="Coin" />
         <div className="px-6 py-4 w-1/2">
           <div className="font-bold text-xl mb-2">{coin.title}</div>
-          <p>Price without shipping: {coin.prizeWithoutShipping}</p>
-          <p>Price with shipping: {coin.prizeWithShipping}</p>
+          <p className="price">Price without shipping: {coin.prizeWithoutShipping}</p>
+          <p className="price">Price with shipping: {coin.prizeWithShipping}</p>
           <p>{coin.shortDescription}</p>
           <p>MORE: {coin.extendedDescription}</p>
           <p>Quantity: {coin.quantityInStock}</p>
@@ -134,7 +136,12 @@ function CoinDetailsCard({ coin }: { coin: Coin }) {
               min="1"
               max={coin.quantityInStock}
               value={quantity}
-              onChange={(e) => setQuantity(Number(e.target.value))}
+              onChange={(e) => {
+                const value = Number(e.target.value);
+                if (value <= coin.quantityInStock) {
+                    setQuantity(value);
+                }
+            }}
               className="rounded p-2"
             />
        <button className="rounded bg-gray-800 text-white p-2" onClick={addToCart}>Add to cart</button>

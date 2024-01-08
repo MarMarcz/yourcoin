@@ -83,43 +83,43 @@ const AddCoinForm: React.FC = () => (
       >
         {({ errors, touched }) => (
           <Form className="flex flex-col space-y-4">
-  <label className="font-bold">Title</label>
-  <Field name="title" className="px-3 py-2 border rounded-md"/>
-  {errors.title && touched.title ? <div className="text-red-500">{errors.title}</div> : null}
+            <label className="font-bold">Title</label>
+            <Field name="title" className="px-3 py-2 border rounded-md" />
+            {errors.title && touched.title ? <div className="text-red-500">{errors.title}</div> : null}
 
-  <label className="font-bold">Image</label>
-  <Field name="image" className="px-3 py-2 border rounded-md"/>
-  {errors.image && touched.image ? <div className="text-red-500">{errors.image}</div> : null}
+            <label className="font-bold">Image</label>
+            <Field name="image" className="px-3 py-2 border rounded-md" />
+            {errors.image && touched.image ? <div className="text-red-500">{errors.image}</div> : null}
 
-  <label className="font-bold">Price Without Shipping</label>
-  <Field name="prizeWithoutShipping" type="number" className="px-3 py-2 border rounded-md"/>
-  {errors.prizeWithoutShipping && touched.prizeWithoutShipping ? <div className="text-red-500">{errors.prizeWithoutShipping}</div> : null}
+            <label className="font-bold">Price Without Shipping</label>
+            <Field name="prizeWithoutShipping" type="number" className="px-3 py-2 border rounded-md" />
+            {errors.prizeWithoutShipping && touched.prizeWithoutShipping ? <div className="text-red-500">{errors.prizeWithoutShipping}</div> : null}
 
-  <label className="font-bold">Price With Shipping</label>
-  <Field name="prizeWithShipping" type="number" className="px-3 py-2 border rounded-md"/>
-  {errors.prizeWithShipping && touched.prizeWithShipping ? <div className="text-red-500">{errors.prizeWithShipping}</div> : null}
+            <label className="font-bold">Price With Shipping</label>
+            <Field name="prizeWithShipping" type="number" className="px-3 py-2 border rounded-md" />
+            {errors.prizeWithShipping && touched.prizeWithShipping ? <div className="text-red-500">{errors.prizeWithShipping}</div> : null}
 
-  <label className="font-bold">Short Description</label>
-  <Field name="shortDescription" className="px-3 py-2 border rounded-md"/>
-  {errors.shortDescription && touched.shortDescription ? <div className="text-red-500">{errors.shortDescription}</div> : null}
+            <label className="font-bold">Short Description</label>
+            <Field name="shortDescription" className="px-3 py-2 border rounded-md" />
+            {errors.shortDescription && touched.shortDescription ? <div className="text-red-500">{errors.shortDescription}</div> : null}
 
-  <label className="font-bold">Quantity In Stock</label>
-  <Field name="quantityInStock" type="number" className="px-3 py-2 border rounded-md"/>
-  {errors.quantityInStock && touched.quantityInStock ? <div className="text-red-500">{errors.quantityInStock}</div> : null}
+            <label className="font-bold">Quantity In Stock</label>
+            <Field name="quantityInStock" type="number" className="px-3 py-2 border rounded-md" />
+            {errors.quantityInStock && touched.quantityInStock ? <div className="text-red-500">{errors.quantityInStock}</div> : null}
 
-  <label className="font-bold">Material</label>
-  <Field as="select" name="material" className="px-3 py-2 border rounded-md">
-    <option value="Gold">Gold</option>
-    <option value="Silver">Silver</option>
-  </Field>
-  {errors.material && touched.material ? <div className="text-red-500">{errors.material}</div> : null}
+            <label className="font-bold">Material</label>
+            <Field as="select" name="material" className="px-3 py-2 border rounded-md">
+              <option value="Gold">Gold</option>
+              <option value="Silver">Silver</option>
+            </Field>
+            {errors.material && touched.material ? <div className="text-red-500">{errors.material}</div> : null}
 
-  <label className="font-bold">Extended Description</label>
-  <Field name="extendedDescription" className="px-3 py-2 border rounded-md"/>
-  {errors.extendedDescription && touched.extendedDescription ? <div className="text-red-500">{errors.extendedDescription}</div> : null}
+            <label className="font-bold">Extended Description</label>
+            <Field name="extendedDescription" className="px-3 py-2 border rounded-md" />
+            {errors.extendedDescription && touched.extendedDescription ? <div className="text-red-500">{errors.extendedDescription}</div> : null}
 
-  <button type="submit" className="px-3 py-2 mt-4 font-bold text-white bg-blue-500 rounded-md">Submit</button>
-</Form>
+            <button type="submit" className="px-3 py-2 mt-4 font-bold text-white bg-blue-500 rounded-md">Submit</button>
+          </Form>
         )}
       </Formik>
     </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useRouter } from 'next/router';
-import Navbar from './Navbar';
+import Navbar from '../Navbar';
 
 const Login = () => {
     const router = useRouter();
