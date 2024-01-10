@@ -5,6 +5,9 @@ import AddReview from '../AddReview';
 import { useMemo, useState } from 'react';
 import { useReducer, useEffect } from 'react';
 import "../../../styles/price.css"
+import { Provider } from 'react-redux';
+import store from './../footer/store';
+import Footer from '../footer/Footer';
 
 interface Review {
   user: string;
@@ -106,6 +109,7 @@ function CoinDetailsCard({ coin }: { coin: Coin }) {
 
   return (
     <div className="flex flex-col max-w-2xl rounded overflow-hidden shadow-lg m-2 relative">
+          <Provider store={store}>
       <div className="flex">
         <img className="w-1/2 bg-white" src={coin.image} alt="Coin" />
         <div className="px-6 py-4 w-1/2">
@@ -157,8 +161,10 @@ function CoinDetailsCard({ coin }: { coin: Coin }) {
       </div>
 
       <AddReview coinId={coin._id} />
-
+      <Footer initialFooterText="Tekst stopki" />   
+            </Provider> 
     </div>
+ 
   );
 }
 

@@ -56,7 +56,6 @@ $input-color: #ccc; // zmienna dla koloru inputów
   }
 
   .parent {
-
     // Struktura cykliczna
     @for $j from 1 through 4 {
       &:nth-child(#{$j}) {
