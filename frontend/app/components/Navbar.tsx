@@ -2,8 +2,7 @@ import "../../styles/globals.css";
 import "../../styles/Navbar.css";
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { FaUserShield } from 'react-icons/fa';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { faShoppingCart, faUserTie } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -15,10 +14,10 @@ function Navbar() {
         </Link>
         <div className="ml-auto">
           <Link href="/basket">
-            <FontAwesomeIcon icon={faShoppingCart} className="cart-icon-better-one" />
+            <FontAwesomeIcon icon={faShoppingCart} className="mr-4" />
             </Link>
           <Link href="/login">
-            <FaUserShield />
+          <FontAwesomeIcon icon={faUserTie} className="mr-4"/>
           </Link>
         </div>
       </nav>
