@@ -1,0 +1,67 @@
+// ShippingFormStyles.module.scss
+
+$main-color: #3498db;
+$secondary-color: #2ecc71;
+$base-padding: 10px;
+$input-color: #ccc; // zmienna dla koloru inputów
+
+@mixin button-styles($isPrimary: true) {
+  @extend %common-styles;
+  margin-top: $base-padding * 2; // Użycie zmiennej, mnożenie
+  background-color: if($isPrimary, darken($main-color, 10%), #ccc);
+  color: if($isPrimary, white, black);
+  cursor: pointer;
+  font-size: 14px;
+
+  &:hover {
+    background-color: if($isPrimary, lighten($main-color, 10%), #ddd);
+  }
+}
+
+@mixin input-styles {
+  @extend %common-styles;
+  background-color: $input-color;
+  border: 1px solid $main-color; 
+}
+
+%common-styles { //dziedziczenie @extend
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: $base-padding; // Użycie zmiennej
+}
+
+.shippingForm {
+  label {
+    display: block;
+    margin-bottom: $base-padding; // Użycie zmiennej
+  }
+
+  input {
+    @include input-styles; // Użycie mixinu
+  }
+
+  select {
+    @include input-styles; // Użycie mixinu
+    background-color: lighten($main-color, 20%); // Dodatkowy styl dla select
+  }
+
+  button {
+    @include button-styles(true); // Użycie mixinu z warunkiem
+  }
+
+  .submitPrompt,
+  .cancelPrompt {
+    margin-top: $base-padding; // Użycie zmiennej
+    font-size: $base-padding * 1.5; // Użycie zmiennej, mnożenie
+  }
+
+  .parent {
+
+    // Struktura cykliczna
+    @for $j from 1 through 4 {
+      &:nth-child(#{$j}) {
+        color: if($j ==1, green, red);
+      }
+    }
+  }
+}
