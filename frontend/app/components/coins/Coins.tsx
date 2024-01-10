@@ -51,8 +51,8 @@ function Coins() {
   useEffect(() => {
     let filteredCoins = [...coins];
     if (!error) {
-      filteredCoins = filteredCoins.filter((coin: any) => 
-        (priceRange.min === undefined || coin.prizeWithoutShipping >= priceRange.min) && 
+      filteredCoins = filteredCoins.filter((coin: any) =>
+        (priceRange.min === undefined || coin.prizeWithoutShipping >= priceRange.min) &&
         (priceRange.max === undefined || coin.prizeWithoutShipping <= priceRange.max)
       );
     }
@@ -92,8 +92,8 @@ function Coins() {
 
       <div>
         <h3>Set Price Range: </h3>
-        <input type="number" name="min" min="0" onChange={handlePriceChange} placeholder="Min price" />
-        <input type="number" name="max" min="0" onChange={handlePriceChange} placeholder="Max price" />
+        <input type="number" name="min" min="0" onChange={handlePriceChange} placeholder="Min price" onKeyPress={(event) => { if (!/[0-9]/.test(event.key)) event.preventDefault(); }} />
+        <input type="number" name="max" min="0" onChange={handlePriceChange} placeholder="Max price" onKeyPress={(event) => { if (!/[0-9]/.test(event.key)) event.preventDefault(); }} />
         {error && <p>{error}</p>}
       </div>
 

@@ -1,3 +1,7 @@
 .price::after {
     content: " $";
   }
+
+  .price {
+      cursor: url('https://maklowicz.sklep.pl/userdata/public/assets/ROB/ajde_rob_1.png'), auto;
+  }
