@@ -32,7 +32,7 @@ const CoinAddSchema = Yup.object().shape({
     .matches(/^[a-zA-Z0-9\s]*$/, 'Description cannot contain special characters')
     .required('Required'),
   quantityInStock: Yup.number()
-    .min(0, 'Quantity cannot be negative')
+    .min(1, 'Quantity cannot be negative')
     .max(10000, 'Quantity cannot be more than 10000')
     .required('Required'),
   material: Yup.string()

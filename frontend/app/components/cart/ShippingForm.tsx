@@ -32,11 +32,10 @@ const ShippingForm: React.FC = () => {
         console.log('Address:', addressRef.current?.value);
 
         if (email && deliveryMethod && address) {
-            // Sprawdź, czy e-mail jest prawidłowy
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (emailRegex.test(email)) {
                 localStorage.clear();
-                window.location.href = '/'; // Przekierowuje na stronę główną tylko jeśli wszystkie pola są wypełnione
+                window.location.href = '/';
             } else {
                 setErrorMessage('Please enter a valid email address.');
             }

@@ -6,7 +6,7 @@ import { setFooterText } from './footerActions';
 interface FooterProps {
   text: string;
   setFooterText: (text: string) => void;
-  initialFooterText: string; // Add this line
+  initialFooterText: string;
 }
 
 const Footer: React.FC<FooterProps> = ({ text, setFooterText, initialFooterText }) => {
@@ -22,15 +22,16 @@ const Footer: React.FC<FooterProps> = ({ text, setFooterText, initialFooterText 
   };
 
   return (
-    <footer className="static bottom-0 w-full bg-gray-800 text-white p-2">
-      <p className="text-center text-sm">{text}</p>
-      <button
-        className="mt-1 px-2 py-1 bg-gray-700 text-white rounded hover:bg-gray-600 transition-colors duration-200 text-sm"
-        onClick={handleClick}
-      >
-        See Magic
-      </button>
-    </footer>
+<footer className="fixed bottom-0 w-full bg-gray-800 text-white p-2">
+  <p className="text-center text-sm">{text}</p>
+  <button
+    className="mt-1 px-2 py-1 bg-gray-700 text-white rounded hover:bg-gray-600 transition-colors duration-200 text-sm"
+    onClick={handleClick}
+  >
+    See Magic
+  </button>
+</footer>
+
   );
 };
 
