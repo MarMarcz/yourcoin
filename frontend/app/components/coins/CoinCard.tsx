@@ -30,7 +30,6 @@ type LoadCartAction = {
 
 type CartAction = AddToCartAction | LoadCartAction;
 
-const initialState: CartItem[] = [];
 
 function cartReducer(state: CartItem[], action: CartAction) {
   switch (action.type) {
@@ -52,22 +51,13 @@ function CoinCard({ coin }: { coin: Coin }) {
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
-  // const [cart, dispatchCart] = useReducer(cartReducer, initialState);
-  // const storedCart = localStorage.getItem('cart');
-  // console.log(storedCart);
-
-  // useEffect(() => {
-  //   if (storedCart) {
-  //     dispatchCart({ type: 'LOAD_CART', payload: JSON.parse(storedCart) });
-  //   }
-  // }, []);
 
 
-const addToCart = () => {
-  const newCartItem: CartItem = { coin, quantity: 1, prizeWithShipping: coin.prizeWithShipping };
-  dispatchCart({ type: 'ADD_TO_CART', payload: newCartItem });
-  window.alert("Successfully added item to the cart!");
-};
+  const addToCart = () => {
+    const newCartItem: CartItem = { coin, quantity: 1, prizeWithShipping: coin.prizeWithShipping };
+    dispatchCart({ type: 'ADD_TO_CART', payload: newCartItem });
+    window.alert("Successfully added item to the cart!");
+  };
 
   return (
     <div

@@ -51,9 +51,6 @@ const EditReviewForm: React.FC = () => {
         fetchData();
     }, []);
 
-    useEffect(() => {
-        console.log('Coins:', coins);
-    }, [coins]);
 
     const handleInputChange = (coinId: string, reviewId: string, field: string, value: string | number) => {
         if ((field === 'user' || field === 'text') && !/^[a-zA-Z0-9\s]*$/.test(value as string)) {

@@ -3,11 +3,8 @@ import Navbar from '../app/components/Navbar'
 import Coins from '../app/components/coins/Coins'
 import Footer from '../app/components/footer/Footer';
 import { Provider } from 'react-redux';
-// import { store } from '../store/store';
 import { footerStore } from '../app/components/footer/footerStore';
 import store from './../app/components/footer/store';
-
-
 
 
 export default function Home({ initialFooterText }: { initialFooterText: string }) {
