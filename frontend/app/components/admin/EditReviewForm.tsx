@@ -38,18 +38,18 @@ const EditReviewForm: React.FC = () => {
         }
     };
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await axios.get<Coin[]>('http://localhost:3001/api/coins');
-                setCoins(response.data);
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
-        };
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         try {
+    //             const response = await axios.get<Coin[]>('http://localhost:3001/api/coins');
+    //             setCoins(response.data);
+    //         } catch (error) {
+    //             console.error('Error fetching data:', error);
+    //         }
+    //     };
 
-        fetchData();
-    }, []);
+    //     fetchData();
+    // }, []);
 
 
     const handleInputChange = (coinId: string, reviewId: string, field: string, value: string | number) => {
