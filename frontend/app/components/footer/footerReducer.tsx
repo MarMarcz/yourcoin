@@ -4,7 +4,7 @@ interface FooterState {
   }
   
   const initialState: FooterState = {
-    text: 'To jest stopka!',
+    text: 'It\'s Magic Footer',
   };
   
   const footerReducer = (state = initialState, action: any) => {

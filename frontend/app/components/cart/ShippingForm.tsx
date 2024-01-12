@@ -11,7 +11,20 @@ const ShippingForm: React.FC = () => {
 
 
     const handleAllGoodClick = () => {
-        setAllGoodClicked(true);
+        const email = emailRef.current?.value;
+        const deliveryMethod = deliveryMethodRef.current?.value;
+        const address = addressRef.current?.value;
+
+        if (email && deliveryMethod && address) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (emailRegex.test(email)) {
+                setAllGoodClicked(true);
+            } else {
+                setErrorMessage('Please enter a valid email address.');
+            }
+        } else {
+            setErrorMessage('Please fill in all fields.');
+        }
     };
 
     const handleCancelClick = () => {
@@ -22,26 +35,12 @@ const ShippingForm: React.FC = () => {
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
 
-        const email = emailRef.current?.value;
-        const deliveryMethod = deliveryMethodRef.current?.value;
-        const address = addressRef.current?.value;
-    
-
         console.log('Email:', emailRef.current?.value);
         console.log('Delivery method:', deliveryMethodRef.current?.value);
         console.log('Address:', addressRef.current?.value);
 
-        if (email && deliveryMethod && address) {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (emailRegex.test(email)) {
-                localStorage.clear();
-                window.location.href = '/';
-            } else {
-                setErrorMessage('Please enter a valid email address.');
-            }
-        } else {
-            setErrorMessage('Please fill in all fields.');
-        }
+        localStorage.clear();
+        window.location.href = '/';
     };
 
     return (

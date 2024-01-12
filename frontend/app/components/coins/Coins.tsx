@@ -97,7 +97,7 @@ function Coins() {
         {error && <p>{error}</p>}
       </div>
 
-      <div className="flex flex-wrap justify-around">
+      <div className="flex flex-wrap justify-around mb-16">
         {displayedCoins.map((coin, index) => (
           <CoinCard key={index} coin={coin} />
         ))}
